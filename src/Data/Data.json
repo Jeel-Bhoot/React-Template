@@ -1,0 +1,35 @@
+{
+  "app": "React-Template",
+  "logo": "Logo",
+  "home": "Home",
+  "about": {
+    "aboutTitle": "About",
+    "header": "Get started with React-Template",
+    "installation": "Installation",
+    "build": "Build",
+    "details": "React-Template is easy to use, has all files having folder structure that makes it easily changeable.",
+    "detailsSecond": "It's fast, flexible, and reliable — with zero-runtime.",
+    "iCommand": "npm install",
+    "buildCommand": "npm run build",
+    "helmet": "Helmet",
+    "tailwind": "Tailwind CSS",
+    "details_second": "that can be composed to build any design, directly in your markup."
+  },
+  "contact": {
+    "contactTitle": "Contact",
+    "content": "Get in touch",
+    "message": "My inbox is always open, Whether you have any suggestions or just want to say hi, I'll try my best to get back to you!"
+  },
+  "main": {
+    "header": "Build awesome React Applications with ready-to-use template",
+    "details": "A utility-first application packed with features like",
+    "reactRouter": "react-router",
+    "helmet": "Helmet",
+    "tailwind": "Tailwind CSS",
+    "details_second": "that can be composed to build any design, directly in your markup."
+  },
+  "notFound": {
+    "nfCode": "404",
+    "nfMessage" : "This page could not be found."
+  }
+}
