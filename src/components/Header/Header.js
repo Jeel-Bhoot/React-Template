@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import { Dialog } from "@headlessui/react";
+import { Dialog, Transition } from "@headlessui/react";
 import data from "../../Data/Data.json";
 import "./style.css";
 
@@ -65,57 +65,67 @@ export default function Header() {
         <div className="w-5 h-0.5 bg-gray-600 mb-1.5"></div>
         <div className="w-5 h-0.5 bg-gray-600"></div>
       </button>
-
-      <Dialog
-        className="fixed top-4 right-4 z-40 w-full max-w-xs rounded-lg shadow-lg p-6 text-base font-semibold bg-slate-800 text-slate-400 highlight-white/5"
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-      >
-        <div
-          className="fixed inset-0 backdrop-blur-sm bg-slate-900/80"
-          aria-hidden="true"
-        />
-        <div className="fixed top-4 right-4 w-full max-w-xs rounded-lg shadow-lg p-5 text-base font-semibold bg-slate-800 text-slate-400 highlight-white/5">
-          <Dialog.Panel>
-            <div className="flex flex-col w-full items-start justify-center gap-5">
-              <span
-                className="absolute top-4 right-5 h-8 flex items-center justify-center text-slate-500 hover:text-slate-600 text-slate-400 hover:text-slate-300"
-                onClick={() => setIsOpen(false)}
-              >
-                <svg
-                  viewBox="0 0 10 10"
-                  className="w-2.5 h-2.5 overflow-visible"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M0 0L10 10M10 0L0 10"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  ></path>
-                </svg>
-              </span>
-              {navs.map((nav) => {
-                return (
-                  <NavLink
-                    key={nav.id}
-                    to={nav.path}
-                    className={({ isActive }) =>
-                      isActive
-                        ? "font-bold text-sky-500"
-                        : "font-bold text-slate-400 hover:text-sky-500"
-                    }
+      <Transition show={isOpen} as={Fragment}>
+        <Dialog
+          className="fixed top-4 right-4 z-40 w-full max-w-xs rounded-lg shadow-lg p-6 text-base font-semibold bg-slate-800 text-slate-400 highlight-white/5"
+          onClose={() => setIsOpen(false)}
+        >
+          <div
+            className="fixed inset-0 backdrop-blur-sm bg-slate-900/80"
+            aria-hidden="true"
+          />
+          <Transition.Child
+            as={Fragment}
+            enter="transition duration-200 ease-out"
+            enterFrom="transform scale-95 opacity-0"
+            enterTo="transform scale-100 opacity-100"
+            leave="transition duration-200 ease-out"
+            leaveFrom="transform scale-100 opacity-100"
+            leaveTo="transform scale-95 opacity-0"
+          >
+            <div className="fixed top-4 right-4 w-full max-w-xs rounded-lg shadow-lg p-5 text-base font-semibold bg-slate-800 text-slate-400 highlight-white/5">
+              <Dialog.Panel>
+                <div className="flex flex-col w-full items-start justify-center gap-5">
+                  <span
+                    className="absolute top-4 right-5 h-8 flex items-center justify-center text-slate-500 hover:text-slate-600 text-slate-400 hover:text-slate-300"
                     onClick={() => setIsOpen(false)}
                   >
-                    {nav.name}
-                  </NavLink>
-                );
-              })}
+                    <svg
+                      viewBox="0 0 10 10"
+                      className="w-2.5 h-2.5 overflow-visible"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M0 0L10 10M10 0L0 10"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      ></path>
+                    </svg>
+                  </span>
+                  {navs.map((nav) => {
+                    return (
+                      <NavLink
+                        key={nav.id}
+                        to={nav.path}
+                        className={({ isActive }) =>
+                          isActive
+                            ? "font-bold text-sky-500"
+                            : "font-bold text-slate-400 hover:text-sky-500"
+                        }
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {nav.name}
+                      </NavLink>
+                    );
+                  })}
+                </div>
+              </Dialog.Panel>
             </div>
-          </Dialog.Panel>
-        </div>
-      </Dialog>
+          </Transition.Child>
+        </Dialog>
+      </Transition>
     </div>
   );
 }
