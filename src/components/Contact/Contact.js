@@ -25,7 +25,7 @@ export default function Contact() {
         </p>
         <button className="w-32 mt-10 rounded-lg bg-blue-600 hover:bg-blue-700">
           <a
-            href="mailto:abhiashobhashana@gmail.com"
+            href="mailto:jeelbhoot0jb@gmail.com"
             className="text-md tracking-tight"
           >
             Say hello
